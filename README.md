@@ -2,11 +2,8 @@
 # Águas de Coimbra - Home Assistant Integration
 
 [![Validate with hassfest](https://github.com/andre19rodrigues/hass-aguas-de-coimbra/actions/workflows/hassfest.yaml/badge.svg)](https://github.com/andre19rodrigues/hass-aguas-de-coimbra/actions/workflows/hassfest.yaml)
-
 [![License](https://img.shields.io/github/license/andre19rodrigues/hass-aguas-de-coimbra)](https://github.com/andre19rodrigues/hass-aguas-de-coimbra/blob/main/LICENSE)
-
 ![Version](https://img.shields.io/github/v/tag/andre19rodrigues/hass-aguas-de-coimbra?label=version)
-  
 
 **Disclaimer:** This integration is not affiliated with Águas de Coimbra.
 
@@ -35,7 +32,7 @@ The integration comprises the following sensors:
 ### Option 1: HACS (Recommended)
 
 1. Go to **HACS > Integrations**.
-2. Click **⋮** (three dots) > Custom Repositories.
+2. Click **⋮(three dots) > Custom Repositories**.
 3. Add this repository URL and select **Integration** as the category.
 4. Click **Add**.
 5. Go to the **Integrations** page and click **Add Integration**
