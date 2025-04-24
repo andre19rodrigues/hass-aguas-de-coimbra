@@ -24,7 +24,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     client = AdCClient(
         username=entry.data["username"],
         password=entry.data["password"],
-        session=session
+        session=session,
     )
 
     await client.get_meter_details()
@@ -35,10 +35,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Run the coordinator for the first time to fetch initial data
     await coordinator.async_config_entry_first_refresh()
 
-    hass.data[DOMAIN][entry.entry_id] = {
-        "client": client,
-        "coordinator": coordinator
-    }
+    hass.data[DOMAIN][entry.entry_id] = {"client": client, "coordinator": coordinator}
 
     # Forward sensor setup to Home Assistant
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)

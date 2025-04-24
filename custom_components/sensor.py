@@ -33,7 +33,7 @@ SENSOR_TYPES = {
         "icon": "mdi:gauge",
         "device_class": "water",
         "state_class": "total_increasing",
-    }
+    },
 }
 
 
@@ -41,10 +41,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
     """Set up ADC sensors based on a config entry."""
     coordinator: AdCCoordinator = hass.data[DOMAIN][entry.entry_id]["coordinator"]
 
-    sensors = [
-        ADCSensor(coordinator, key, entry.entry_id)
-        for key in SENSOR_TYPES
-    ]
+    sensors = [ADCSensor(coordinator, key, entry.entry_id) for key in SENSOR_TYPES]
     async_add_entities(sensors)
 
 

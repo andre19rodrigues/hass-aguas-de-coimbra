@@ -1,2 +1,19 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
+# VS Code / PyCharm
+.vscode/
+.idea/
+
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+
+# dotenv
+.env
+.env.*
+
+
+# Linters
+.flake8

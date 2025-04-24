@@ -14,11 +14,13 @@ _LOGGER = logging.getLogger(__name__)
 
 class InvalidAuth(Exception):
     """Raised when authentication fails."""
+
     pass
 
 
 class CannotConnect(Exception):
     """Raised when a connection to the API fails."""
+
     pass
 
 
@@ -54,29 +56,31 @@ class AdCClient:
             token = data.get("token")
             self._token = token["token"]
             self._token_expiration_date = token["expirationDate"]
-    
+
     def _is_token_valid(self):
         """Check if the token is still valid."""
         if self._token and self._token_expiration_date:
             return datetime.now().timestamp() < self._token_expiration_date
         return False
-    
+
     @property
     async def _headers(self):
         """Set headers for subsequent requests."""
         if not self._is_token_valid():
             _LOGGER.debug("Token expired, logging in again")
             await self.login()
-            
+
         return {
             "X-Auth-Token": self._token,
             "Content-Type": "application/json",
         }
-    
+
     async def get_subscription_id(self) -> list:
         """Fetch account subscription ID"""
 
-        subscription_url = f"{BALCAO_DIGITAL_URL}uPortal2/coimbra/Subscription/listSubscriptions"
+        subscription_url = (
+            f"{BALCAO_DIGITAL_URL}uPortal2/coimbra/Subscription/listSubscriptions"
+        )
 
         headers = await self._headers
         async with self._session.get(subscription_url, headers=headers) as resp:
@@ -95,14 +99,10 @@ class AdCClient:
         if not self._subscription_id:
             await self.get_subscription_id()
 
-        query_params = {
-            "subscriptionId": self._subscription_id
-        }
+        query_params = {"subscriptionId": self._subscription_id}
         headers = await self._headers
         async with self._session.get(
-            details_url, 
-            headers=headers, 
-            params=query_params
+            details_url, headers=headers, params=query_params
         ) as resp:
             if resp.status != 200:
                 _LOGGER.error("Failed to fetch meter details")
@@ -113,7 +113,7 @@ class AdCClient:
             self._codigo_produto = data[0]["chaveContador"]["codigoProduto"]
             self._numero_contador = data[0]["chaveContador"]["numeroContador"]
             return data
-    
+
     async def get_last_meter_reading(self) -> float:
         """Fetch latest meter reading"""
         details = await self.get_meter_details()
@@ -134,7 +134,9 @@ class AdCClient:
         }
 
         headers = await self._headers
-        async with self._session.get(usage_url, headers=headers, params=query_params) as resp:
+        async with self._session.get(
+            usage_url, headers=headers, params=query_params
+        ) as resp:
             if resp.status != 200:
                 _LOGGER.error("Failed to fetch usage data")
                 raise Exception("Failed to fetch usage data")
@@ -144,7 +146,7 @@ class AdCClient:
 
     async def get_consumption(self, today: bool = True) -> float:
         """Get water usage for today or yesterday"""
-        
+
         day = date.today()
         if not today:
             day = day - timedelta(days=1)

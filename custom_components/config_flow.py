@@ -48,14 +48,16 @@ class ADCConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     data={
                         "username": user_input["username"],
                         "password": user_input["password"],
-                    }
+                    },
                 )
 
         return self.async_show_form(
             step_id="user",
-            data_schema=vol.Schema({
-                vol.Required("username"): str,
-                vol.Required("password"): str,
-            }),
-            errors=errors
+            data_schema=vol.Schema(
+                {
+                    vol.Required("username"): str,
+                    vol.Required("password"): str,
+                }
+            ),
+            errors=errors,
         )
