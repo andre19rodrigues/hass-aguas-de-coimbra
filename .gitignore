@@ -17,3 +17,8 @@ ENV/
 # dotenv
 .env
 .env.*
+
+
+
+# Linters
+.flake8

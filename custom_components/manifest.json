@@ -4,14 +4,12 @@
   "codeowners": [
     "@andre19rodrigues"
   ],
-  "version": "0.1.0",
   "config_flow": true,
-  "documentation": "https://github.com/andre19rodrigues/hass_aguas_de_coimbra",
+  "documentation": "https://github.com/andre19rodrigues/hass-aguas-de-coimbra/",
+  "issue_tracker": "https://github.com/andre19rodrigues/hass-aguas-de-coimbra/issues",
   "iot_class": "cloud_polling",
-  "quality_scale": "bronze",
   "dependencies": [],
-  "requirements": [
-    "aiohttp"
-  ],
+  "requirements": [],
   "icon": "mdi:water"
+  "version": "0.1.0",
 }
