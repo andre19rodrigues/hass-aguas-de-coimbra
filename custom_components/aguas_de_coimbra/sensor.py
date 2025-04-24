@@ -52,11 +52,13 @@ class ADCSensor(CoordinatorEntity, SensorEntity):
         self.type = sensor_type
         self.entry_id = entry_id
         self._attr_name = f"{SENSOR_TYPES[sensor_type]['name']}"
+        self._attr_unique_id = f"{entry_id}_{sensor_type}"
         self._attr_native_unit_of_measurement = SENSOR_TYPES[sensor_type]["unit"]
         self._attr_icon = SENSOR_TYPES[sensor_type]["icon"]
         self._attr_has_entity_name = True
         self._attr_device_class = SENSOR_TYPES[sensor_type].get("device_class")
         self._attr_state_class = SENSOR_TYPES[sensor_type].get("state_class")
+        self.entity_id = f"sensor.{DOMAIN}_{sensor_type}"
 
     @property
     def device_info(self) -> DeviceInfo:
@@ -66,10 +68,6 @@ class ADCSensor(CoordinatorEntity, SensorEntity):
             manufacturer="Águas de Coimbra",
             entry_type="service",
         )
-
-    @property
-    def unique_id(self) -> str:
-        return f"{self.entry_id}_{self.type}"
 
     @property
     def native_value(self):
