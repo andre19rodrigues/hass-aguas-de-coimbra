@@ -10,6 +10,6 @@
   "iot_class": "cloud_polling",
   "dependencies": [],
   "requirements": [],
-  "icon": "mdi:water"
-  "version": "0.1.0",
+  "icon": "mdi:water",
+  "version": "0.1.0"
 }
