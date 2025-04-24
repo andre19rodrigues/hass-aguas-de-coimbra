@@ -11,6 +11,8 @@ This Home Assistant integration retrieves telemetry data from your water meter a
 
 For precise and real-time water usage, consider installing a dedicated sensor. [Home Assistant](https://www.home-assistant.io/docs/energy/water/) provides several examples.
 
+![adc](https://github.com/user-attachments/assets/84868522-672d-4f75-9aa0-dfc407e01707)
+
 
 ## 💧 Sensors
 
