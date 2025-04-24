@@ -9,7 +9,7 @@
 This Home Assistant integration retrieves telemetry data from your water meter as published on the [Águas de Coimbra website](https://bdigital.aguasdecoimbra.pt/uPortal2/coimbra/index.html).  
 For precise and real-time water usage, consider installing a dedicated sensor. [Home Assistant](https://www.home-assistant.io/docs/energy/water/) provides several examples.
 
-## Sensors
+## 💧 Sensors
 
 The integration comprises the following sensors:
 | Sensor Name | Unit | Description | Max. update frequency                                                                                        
@@ -20,3 +20,21 @@ The integration comprises the following sensors:
 | `meter_reading_estimated`| Cubic meter (m³) | An estimate calculated by this integration: `meter_reading_official` + `today_consumption`. It’s only an approximation, as `meter_reading_official` is an integer and `today_consumption` is not real-time. Suitable for use in [Home Assistant Energy](https://www.home-assistant.io/docs/energy/) to provide more frequent updates. A value jump is expected shortly after midnight when `meter_reading_official` updates. | Once per hour
 
 **Note:** To prevent abuse of the Águas de Coimbra portal, this integration retrieves data only once per hour and fetches only essential information.
+
+## 🛠 Installation
+
+### Option 1: HACS (Recommended)
+
+1. Go to **HACS > Integrations**.
+2. Click **⋮** (three dots) > Custom Repositories.
+3. Add this repository URL and select **Integration** as the category.
+4. Click **Add**.
+5. Go to the **Integrations** page and click **Add Integration**
+6. Search for **Águas de Coimbra** and install it.
+7. Restart Home Assistant.
+
+### Option 2: Manual
+
+1. Download the contents of this repository.
+2. Copy the folder `aguas_de_coimbra` to your Home Assistant config folder under `custom_components/aguas_de_coimbra/`
+3. Restart Home Assistant.
