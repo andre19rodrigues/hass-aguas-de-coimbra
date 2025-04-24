@@ -1,0 +1,14 @@
+{
+  "domain": "aguas_de_coimbra",
+  "name": "Aguas de Coimbra",
+  "codeowners": [
+    "@andre19rodrigues"
+  ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/andre19rodrigues/hass-aguas-de-coimbra/",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/andre19rodrigues/hass-aguas-de-coimbra/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
