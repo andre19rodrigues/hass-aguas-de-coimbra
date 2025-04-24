@@ -1,0 +1,32 @@
+{
+    "title": "Águas de Coimbra",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Configure Águas de Coimbra",
+                "description": "Introduza as credenciais da sua conta Águas de Coimbra."
+            }
+        },
+        "error": {
+            "invalid_auth": "As credenciais fornecidas são inválidas.",
+            "cannot_connect": "Não foi possível conectar a Águas de Coimbra.",
+            "unknown": "Erro desconhecido ao conectar a Águas de Coimbra."
+        }
+    },
+    "entity": {
+        "sensor": {
+            "today_consumption": {
+                "name": "Consumo Hoje"
+            },
+            "yesterday_consumption": {
+                "name": "Consumo Ontem"
+            },
+            "meter_reading_official": {
+                "name": "Leitura Oficial do Contador"
+            },
+            "meter_reading_estimated": {
+                "name": "Leitura Estimada do Contador"
+            }
+        }
+    }
+}
