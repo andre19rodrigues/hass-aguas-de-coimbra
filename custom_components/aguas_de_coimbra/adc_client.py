@@ -1,13 +1,10 @@
 import logging
-
-from datetime import date
-from datetime import datetime
 from datetime import timedelta
 
 from aiohttp import ClientSession
+from homeassistant.util import dt as dt_util
 
 from .const import BALCAO_DIGITAL_URL
-
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -60,7 +57,7 @@ class AdCClient:
     def _is_token_valid(self):
         """Check if the token is still valid."""
         if self._token and self._token_expiration_date:
-            return datetime.now().timestamp() < self._token_expiration_date
+            return dt_util.now().timestamp() < self._token_expiration_date
         return False
 
     @property
@@ -147,11 +144,11 @@ class AdCClient:
     async def get_consumption(self, today: bool = True) -> float:
         """Get water usage for today or yesterday"""
 
-        day = date.today()
+        day = dt_util.now()
         if not today:
             day = day - timedelta(days=1)
 
-        data = await self._get_usage(day=day.isoformat())
+        data = await self._get_usage(day=day.strftime("%Y-%m-%d"))
 
         consumption = 0
         for reading in data:

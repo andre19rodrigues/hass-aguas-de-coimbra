@@ -6,9 +6,8 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .adc_client import AdCClient
-from .coordinator import AdCCoordinator
 from .const import DOMAIN
-
+from .coordinator import AdCCoordinator
 
 PLATFORMS: list[Platform] = [
     Platform.SENSOR,

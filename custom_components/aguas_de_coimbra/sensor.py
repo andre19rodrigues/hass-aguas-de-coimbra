@@ -19,15 +19,8 @@ SENSOR_TYPES = {
         "icon": "mdi:water",
         "device_class": "water",
     },
-    "meter_reading_official": {
-        "name": "Official Meter Reading",
-        "unit": UnitOfVolume.CUBIC_METERS,
-        "icon": "mdi:gauge",
-        "device_class": "water",
-        "state_class": "total_increasing",
-    },
-    "meter_reading_estimated": {
-        "name": "Estimated Meter Reading",
+    "meter_reading": {
+        "name": "Meter Reading",
         "unit": UnitOfVolume.CUBIC_METERS,
         "icon": "mdi:gauge",
         "device_class": "water",
