@@ -11,7 +11,7 @@ This Home Assistant integration retrieves telemetry data from your water meter a
 
 For precise and real-time water usage, consider installing a dedicated sensor. [Home Assistant](https://www.home-assistant.io/docs/energy/water/) provides several examples.
 
-![adc](https://github.com/user-attachments/assets/4f541035-b1f5-420f-8475-97ab15539409)
+![sensors](https://github.com/user-attachments/assets/442bb382-05bb-4fc1-abfa-da802afb449a)
 
 
 ## 💧 Sensors
@@ -30,7 +30,8 @@ The integration comprises the following sensors:
 
 **Notes:** 
  - To prevent abuse of the Águas de Coimbra portal, this integration retrieves data only once per hour and fetches only essential information.
- - The billing cycle cost shown is only an estimate. Please note that the actual amount on your invoice may differ. This may be due to variations in the billing cycle length (which can range from 28 to 30 days), inaccuracies in the calculation formula, or outdated or incorrect pricing. This estimate is provided for informational purposes only, and I cannot be held responsible for any discrepancies.
+ - The billing cycle cost shown is only an estimate. Please note that the actual amount on your invoice may differ. This may be due to missing data, variations in the billing cycle length (which can range from 28 to 31 days), inaccuracies in the calculation formula, or outdated or incorrect pricing. This estimate is provided for informational purposes only. Neither this integration nor its contributors can be held responsible for any discrepancies.
+
 
 ## 🛠 Installation
 
@@ -57,3 +58,5 @@ The integration comprises the following sensors:
 ## ⚙️ Setup
 
 To configure the integration, please enter your credentials for the Águas de Coimbra portal. You may also optionally specify a custom billing cycle start date (default is day 1) and indicate whether the social tariff should be applied.
+
+![configuration](https://github.com/user-attachments/assets/1d6e536f-4c3b-4cf6-ad64-98f64ff19e0a)
