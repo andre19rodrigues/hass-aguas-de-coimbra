@@ -30,7 +30,15 @@ The integration comprises the following sensors:
 
 **Notes:** 
  - To prevent abuse of the Águas de Coimbra portal, this integration retrieves data only once per hour and fetches only essential information.
- - The billing cycle cost shown is only an estimate. Please note that the actual amount on your invoice may differ. This may be due to missing data, variations in the billing cycle length (which can range from 28 to 31 days), inaccuracies in the calculation formula, or outdated or incorrect pricing. This estimate is provided for informational purposes only. Neither this integration nor its contributors can be held responsible for any discrepancies.
+ - The billing cycle cost shown is an estimate only. The actual amount on your invoice may differ due to factors such as:
+   -  Missing or incomplete data;
+   -   Use of an incorrect water meter diameter;
+   -   Variations in the billing cycle length (which can range from 28 to 31 days);
+   -   Potential inaccuracies in the calculation formula;
+   -   Outdated or incorrect pricing information;
+
+This estimate is provided for informational purposes only. Neither this integration nor its contributors accept responsibility for any discrepancies between this estimate and your actual bill.
+
 
 
 ## 🛠 Installation
