@@ -1,5 +1,6 @@
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.const import UnitOfVolume
+from homeassistant.const import CURRENCY_EURO
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -25,6 +26,18 @@ SENSOR_TYPES = {
         "icon": "mdi:gauge",
         "device_class": "water",
         "state_class": "total_increasing",
+    },
+    "billing_cycle_consumption": {
+        "name": "Billing Cycle Consumption",
+        "unit": UnitOfVolume.CUBIC_METERS,
+        "icon": "mdi:water",
+        "device_class": "water",
+    },
+    "billing_cycle_cost": {
+        "name": "Billing Cycle Cost",
+        "unit": CURRENCY_EURO,
+        "icon": "mdi:cash",
+        "device_class": "monetary",
     },
 }
 

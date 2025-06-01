@@ -4,13 +4,32 @@
         "step": {
             "user": {
                 "title": "Configure Águas de Coimbra",
-                "description": "Introduza as credenciais da sua conta Águas de Coimbra."
+                "description": "Introduza as credenciais da sua conta Águas de Coimbra.",
+                "data": {
+                    "username": "Nome de utilizador",
+                    "password": "Palavra-passe",
+                    "billing_cycle_start_day": "Dia de início do ciclo de faturação",
+                    "social_tariff": "Tarifa social"
+                }
             }
         },
         "error": {
             "invalid_auth": "As credenciais fornecidas são inválidas.",
             "cannot_connect": "Não foi possível conectar a Águas de Coimbra.",
             "unknown": "Erro desconhecido ao conectar a Águas de Coimbra."
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Configure Águas de Coimbra",
+                "data": {
+                    "username": "Nome de utilizador",
+                    "password": "Palavra-passe",
+                    "billing_cycle_start_day": "Dia de início do ciclo de faturação",
+                    "social_tariff": "Tarifa social"
+                }
+            }
         }
     }
 }
