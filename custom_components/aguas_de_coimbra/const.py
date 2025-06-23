@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 DOMAIN = "aguas_de_coimbra"
-DEFAULT_UPDATE_INTERVAL = timedelta(hours=1)
+DEFAULT_UPDATE_INTERVAL = timedelta(minutes=30)
 BALCAO_DIGITAL_URL = "https://bdigital.aguasdecoimbra.pt/"
 
 # --- PRICES AND FEES ---

@@ -21,15 +21,15 @@ The integration comprises the following sensors:
 
 | Sensor Name | Unit | Description | Max. update frequency |
 |----------------|---------------|------------------|------------|
-| `today_consumption` | Litre (L) | Today's water consumption. Sum of all the readings available for the day — typically one per hour, but often inconsistent, with readings occurring only a few times per day. | Once per hour |
+| `today_consumption` | Litre (L) | Today's water consumption. Sum of all the readings available for the day — typically one per hour, but often inconsistent, with readings occurring only a few times per day. | Every 30 minutes |
 | `yesterday_consumption` | Litre (L) | Yesterday's water consumption. Sum of all readings from the previous day. | Once per day |
 | `meter_reading` | Cubic meter (m³) | Official meter reading from Águas de Coimbra. Updated once per day around midnight. Although stored as a float, the meter appears to report only the integer part. This is the value that will appear on your invoice. | Once per day |
-| `billing_cycle_consumption` | Cubic meter (m³) | Water consumption during the current billing cycle. | Once per hour |
-| `billing_cycle_cost` | Euro (€)  | Cost of the billing cycle. | Once per hour |
+| `billing_cycle_consumption` | Cubic meter (m³) | Water consumption during the current billing cycle. | Every 30 minutes |
+| `billing_cycle_cost` | Euro (€)  | Cost of the billing cycle. | Every 30 minutes |
 
 
 **Notes:** 
- - To prevent abuse of the Águas de Coimbra portal, this integration retrieves data only once per hour and fetches only essential information.
+ - To prevent abuse of the Águas de Coimbra portal, this integration retrieves data only every 30 minutes and limits requests to essential information.
  - The billing cycle cost shown is an estimate only. The actual amount on your invoice may differ due to factors such as:
    -  Missing or incomplete data;
    -   Use of an incorrect water meter diameter;
