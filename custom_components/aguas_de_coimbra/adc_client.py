@@ -77,8 +77,7 @@ class AdCClient:
             return dt_util.now().timestamp() < self._token_expiration_date
         return False
 
-    @property
-    async def _headers(self):
+    async def _headers(self) -> dict:
         """Set headers for subsequent requests."""
         if not self._is_token_valid():
             _LOGGER.debug("Token expired, logging in again")
@@ -96,7 +95,7 @@ class AdCClient:
             f"{BALCAO_DIGITAL_URL}uPortal2/coimbra/Subscription/listSubscriptions"
         )
 
-        headers = await self._headers
+        headers = await self._headers()
         async with self._session.get(subscription_url, headers=headers) as resp:
             if resp.status != 200:
                 _LOGGER.error("Failed to fetch subscription ID")
@@ -114,12 +113,14 @@ class AdCClient:
             await self.get_subscription_id()
 
         query_params = {"subscriptionId": self._subscription_id}
-        headers = await self._headers
+        headers = await self._headers()
         async with self._session.get(
             details_url, headers=headers, params=query_params
         ) as resp:
             if resp.status != 200:
                 _LOGGER.error("Failed to fetch meter details")
+                # revoke token if it fails
+                self._token = None
                 raise Exception("Failed to fetch meter details")
 
             data = await resp.json()
@@ -168,7 +169,7 @@ class AdCClient:
             "finalDate": final_day if final_day else initial_day,
         }
 
-        headers = await self._headers
+        headers = await self._headers()
         async with self._session.get(
             usage_url, headers=headers, params=query_params
         ) as resp:
