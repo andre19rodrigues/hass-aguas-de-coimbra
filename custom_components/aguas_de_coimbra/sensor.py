@@ -78,3 +78,6 @@ class ADCSensor(CoordinatorEntity, SensorEntity):
     @property
     def native_value(self):
         return self.coordinator.data.get(self.type)
+
+    async def _handle_coordinator_update(self) -> None:
+        self.async_write_ha_state()
