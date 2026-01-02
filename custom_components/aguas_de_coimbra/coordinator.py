@@ -100,9 +100,9 @@ class AdCCoordinator(DataUpdateCoordinator):
             except Exception as err:
                 _LOGGER.warning("Failed to fetch yesterday's consumption: %s", err)
 
-            if now.hour >= 1:
-                # As the meter reading is usually updated around midnight,
-                # it's better to cache it only after 1 AM to allow some buffer time for the update
+            if now.hour >= 3:
+                # Meter reading is usually updated around midnight. Yesterday might take a few hours
+                # Cache it only after 3 AM to allow some buffer time for the update
                 self._last_update = today_str
         else:
             _LOGGER.debug("Using cached yesterday_consumption and meter_reading")
