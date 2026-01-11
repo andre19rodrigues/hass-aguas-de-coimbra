@@ -11,7 +11,7 @@ This Home Assistant integration retrieves telemetry data from your water meter a
 
 For precise and real-time water usage, consider installing a dedicated sensor. [Home Assistant](https://www.home-assistant.io/docs/energy/water/) provides several examples.
 
-![sensors](https://github.com/user-attachments/assets/442bb382-05bb-4fc1-abfa-da802afb449a)
+<img width="339" height="574" alt="sensors" src="https://github.com/user-attachments/assets/2c4d2b2b-ba2a-443f-9f58-2b6bc7034eaf" />
 
 
 ## 💧 Sensors
@@ -26,6 +26,7 @@ The integration comprises the following sensors:
 | `meter_reading` | Cubic meter (m³) | Official meter reading from Águas de Coimbra. Updated once per day around midnight. Although stored as a float, the meter appears to report only the integer part. This is the value that will appear on your invoice. | Once per day |
 | `billing_cycle_consumption` | Cubic meter (m³) | Water consumption during the current billing cycle. | Every 30 minutes |
 | `billing_cycle_cost` | Euro (€)  | Cost of the billing cycle. | Every 30 minutes |
+| `last_successful_refresh` | N/A  | Timestamp of the last API call to Águas de Coimbra. | Every 30 minutes |
 
 
 **Notes:** 
