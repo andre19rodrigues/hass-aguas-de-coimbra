@@ -21,7 +21,7 @@ WATER_FIXED_FEE__SOCIAL_TARIFF = 0
 
 # min and max values are in cubic meters
 # prices are in euros per cubic meter
-# price are in a tiered structure
+# prices are in a tiered structure
 WATER_CONSUMPTION = [
     {"min": 0, "max": 5, "price": 0.6184},
     {"min": 5, "max": 15, "price": 0.9107},
@@ -44,7 +44,7 @@ WATER_RESOURCES_TAX = 0.0353
 SEWAGE_FIXED_FEE = 0.1302
 SEWAGE_FIXED_FEE__SOCIAL_TARIFF = 0
 
-# WATER_CONSUMPTION in euros x SEWAGE_CONSUMPTION (114,46%)
+# WATER_CONSUMPTION in euros x SEWAGE_CONSUMPTION (114.46%)
 SEWAGE_CONSUMPTION = 1.1446
 SEWAGE_CONSUMPTION__SOCIAL_TARIFF = 0.7623
 

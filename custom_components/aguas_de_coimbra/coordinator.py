@@ -49,6 +49,7 @@ class AdCCoordinator(DataUpdateCoordinator):
             "meter_reading": 0,
             "billing_cycle_consumption": 0,
             "billing_cycle_cost": 0,
+            "last_successful_refresh": None,
         }
 
     async def _async_update_data(self) -> dict:
@@ -56,6 +57,7 @@ class AdCCoordinator(DataUpdateCoordinator):
 
         now = dt_util.now()
         today_str = now.strftime("%Y-%m-%d")
+        self._data["last_successful_refresh"] = now
 
         # Try to get today's consumption
         try:
@@ -100,9 +102,10 @@ class AdCCoordinator(DataUpdateCoordinator):
             except Exception as err:
                 _LOGGER.warning("Failed to fetch yesterday's consumption: %s", err)
 
-            if now.hour >= 3:
-                # Meter reading is usually updated around midnight. Yesterday might take a few hours
-                # Cache it only after 3 AM to allow some buffer time for the update
+            if now.hour >= 5:
+                # Meter reading is usually updated around midnight. 
+                # "Yesterday" might take a few hours to be fully updated.
+                # Cache it only after 5 AM to allow some buffer time for the update
                 self._last_update = today_str
         else:
             _LOGGER.debug("Using cached yesterday_consumption and meter_reading")

@@ -1,7 +1,11 @@
-from homeassistant.components.sensor import SensorEntity
-from homeassistant.const import UnitOfVolume
-from homeassistant.const import CURRENCY_EURO
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+    SensorEntity,
+    SensorStateClass,
+)
+from homeassistant.const import CURRENCY_EURO, UnitOfVolume
 from homeassistant.helpers.device_registry import DeviceInfo
+from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
@@ -12,20 +16,20 @@ SENSOR_TYPES = {
         "name": "Today's Consumption",
         "unit": UnitOfVolume.LITERS,
         "icon": "mdi:water",
-        "device_class": "water",
+        "device_class": SensorDeviceClass.WATER,
     },
     "yesterday_consumption": {
         "name": "Yesterday's Consumption",
         "unit": UnitOfVolume.LITERS,
         "icon": "mdi:water",
-        "device_class": "water",
+        "device_class": SensorDeviceClass.WATER,
     },
     "meter_reading": {
         "name": "Meter Reading",
         "unit": UnitOfVolume.CUBIC_METERS,
         "icon": "mdi:gauge",
-        "device_class": "water",
-        "state_class": "total_increasing",
+        "device_class": SensorDeviceClass.WATER,
+        "state_class": SensorStateClass.TOTAL_INCREASING,
     },
     "billing_cycle_consumption": {
         "name": "Billing Cycle Consumption",
@@ -37,7 +41,14 @@ SENSOR_TYPES = {
         "name": "Billing Cycle Cost",
         "unit": CURRENCY_EURO,
         "icon": "mdi:cash",
-        "device_class": "monetary",
+        "device_class": SensorDeviceClass.MONETARY,
+    },
+    "last_successful_refresh": {
+        "name": "Last Successful Refresh",
+        "unit": None,
+        "icon": "mdi:clock",
+        "device_class": SensorDeviceClass.TIMESTAMP,
+        "entity_category": EntityCategory.DIAGNOSTIC,
     },
 }
 
@@ -64,6 +75,7 @@ class ADCSensor(CoordinatorEntity, SensorEntity):
         self._attr_has_entity_name = True
         self._attr_device_class = SENSOR_TYPES[sensor_type].get("device_class")
         self._attr_state_class = SENSOR_TYPES[sensor_type].get("state_class")
+        self._attr_entity_category = SENSOR_TYPES[sensor_type].get("entity_category")
         self.entity_id = f"sensor.{DOMAIN}_{sensor_type}"
 
     @property
@@ -79,5 +91,5 @@ class ADCSensor(CoordinatorEntity, SensorEntity):
     def native_value(self):
         return self.coordinator.data.get(self.type)
 
-    async def _handle_coordinator_update(self) -> None:
-        self.async_write_ha_state()
+    def _handle_coordinator_update(self) -> None:
+        super()._handle_coordinator_update()
