@@ -63,7 +63,7 @@ class AdCClient:
                 _LOGGER.error("Invalid username or password")
                 raise InvalidAuth("Invalid username or password")
             elif resp.status != 200:
-                _LOGGER.error("Failed to connect to the API")
+                _LOGGER.error("Failed to connect to the API. Status code: %s", resp.status)
                 raise CannotConnect("Failed to connect to the API")
 
             data = await resp.json()
@@ -98,7 +98,7 @@ class AdCClient:
         headers = await self._headers()
         async with self._session.get(subscription_url, headers=headers) as resp:
             if resp.status != 200:
-                _LOGGER.error("Failed to fetch subscription ID")
+                _LOGGER.error("Failed to fetch subscription ID. Status code: %s", resp.status)
                 raise Exception("Failed to fetch subscription ID")
 
             data = await resp.json()
@@ -118,7 +118,7 @@ class AdCClient:
             details_url, headers=headers, params=query_params
         ) as resp:
             if resp.status != 200:
-                _LOGGER.error("Failed to fetch meter details")
+                _LOGGER.error("Failed to fetch meter details. Status code: %s", resp.status)
                 # revoke token if it fails
                 self._token = None
                 raise Exception("Failed to fetch meter details")
@@ -174,7 +174,7 @@ class AdCClient:
             usage_url, headers=headers, params=query_params
         ) as resp:
             if resp.status != 200:
-                _LOGGER.error("Failed to fetch usage data")
+                _LOGGER.error("Failed to fetch usage data. Status code: %s", resp.status)
                 raise Exception("Failed to fetch usage data")
 
             data = await resp.json()
