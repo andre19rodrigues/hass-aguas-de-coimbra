@@ -5,6 +5,12 @@
 [![License](https://img.shields.io/github/license/andre19rodrigues/hass-aguas-de-coimbra)](https://github.com/andre19rodrigues/hass-aguas-de-coimbra/blob/main/LICENSE)
 ![Version](https://img.shields.io/github/v/tag/andre19rodrigues/hass-aguas-de-coimbra?label=version)
 
+> [!WARNING]
+> **This integration is deprecated and no longer maintained.**
+> I no longer have an Águas de Coimbra account, so I can't keep it working or test changes.
+> Please use [jdrdionisio/hass-aguas-de-coimbra](https://github.com/jdrdionisio/hass-aguas-de-coimbra) instead.
+> To migrate: install the new integration, then remove this one from **Settings > Devices & services** and uninstall it from HACS.
+
 **Disclaimer:** This integration is not affiliated with Águas de Coimbra.
 
 This Home Assistant integration retrieves telemetry data from your water meter as published on the [Águas de Coimbra website](https://bdigital.aguasdecoimbra.pt/uPortal2/coimbra/index.html).
